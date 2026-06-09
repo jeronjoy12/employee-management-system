@@ -5,8 +5,12 @@
 <button (click)="increaseCount()">
   Add Employee
 </button>
+<p *ngIf="employeeCount > 100">
+  More than 100 employees
+</p>
 
 <hr>
+
 
 <input
   type="text"
@@ -14,6 +18,31 @@
   placeholder="Enter employee name">
 
 <p>Employee Name: {{ employeeName }}</p>
+
+<div [ngSwitch]="role">
+
+  <p *ngSwitchCase="'admin'">
+    Admin Screen
+  </p>
+
+  <p *ngSwitchCase="'manager'">
+    Manager Screen
+  </p>
+
+  <p *ngSwitchDefault>
+    Employee Screen
+  </p>
+
+</div>
+<button (click)="showEmployees = !showEmployees">
+  Toggle Employees
+</button>
+
+<ul *ngIf="showEmployees">
+  <li *ngFor="let employee of employees">
+    {{ employee }}
+  </li>
+</ul>
 
 <button (click)="saveEmployee()">
   Save Employee
