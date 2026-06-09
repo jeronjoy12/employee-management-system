@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'app-employee-card',
@@ -9,5 +14,12 @@ export class EmployeeCardComponent {
 
   @Input()
   employeeName: string = '';
+
+  @Output()
+  deleteEmployee = new EventEmitter<string>();
+
+  onDelete(): void {
+    this.deleteEmployee.emit(this.employeeName);
+  }
 
 }

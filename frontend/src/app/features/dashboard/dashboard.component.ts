@@ -32,5 +32,10 @@ export class DashboardComponent implements OnInit {
   saveEmployee(): void {
     console.log(this.employeeName);
   }
+  handleDelete(name: string): void {
+
+    console.log('Deleted:', name);
+
+  }
 
 }

@@ -11,7 +11,8 @@
 
 <hr>
 <app-employee-card
-  [employeeName]="employeeName">
+  [employeeName]="employeeName"
+  (deleteEmployee)="handleDelete($event)">
 </app-employee-card>
 
 <input
@@ -19,7 +20,7 @@
   [(ngModel)]="employee"
   placeholder="Enter employee name">
 
-<p>Employee Name: {{ employee }}</p>
+
 
 <div [ngSwitch]="role">
 
