@@ -9,6 +9,7 @@ export class DashboardComponent implements OnInit {
   title = 'Employee Management System';
 
   employeeCount = 100;
+  employeeName = '';
 
   constructor() {}
 
@@ -18,6 +19,9 @@ export class DashboardComponent implements OnInit {
 
   increaseCount(): void {
     this.employeeCount++;
+  }
+  saveEmployee(): void {
+    console.log(this.employeeName);
   }
 
 }

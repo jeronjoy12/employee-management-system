@@ -5,3 +5,16 @@
 <button (click)="increaseCount()">
   Add Employee
 </button>
+
+<hr>
+
+<input
+  type="text"
+  [(ngModel)]="employeeName"
+  placeholder="Enter employee name">
+
+<p>Employee Name: {{ employeeName }}</p>
+
+<button (click)="saveEmployee()">
+  Save Employee
+</button>
