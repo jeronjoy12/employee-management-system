@@ -10,13 +10,14 @@ export class DashboardComponent implements OnInit {
 
 
   employeeCount = 100;
-  employeeName = '';
+  employeeName = 'John Doe';
   employees = [
     'John',
     'David',
     'Alex'
   ];
   role = 'admin';
+  employee='';
   showEmployees = true;
 
   constructor() {}

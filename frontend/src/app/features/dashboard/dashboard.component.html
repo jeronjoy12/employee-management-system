@@ -10,14 +10,16 @@
 </p>
 
 <hr>
-
+<app-employee-card
+  [employeeName]="employeeName">
+</app-employee-card>
 
 <input
   type="text"
-  [(ngModel)]="employeeName"
+  [(ngModel)]="employee"
   placeholder="Enter employee name">
 
-<p>Employee Name: {{ employeeName }}</p>
+<p>Employee Name: {{ employee }}</p>
 
 <div [ngSwitch]="role">
 
