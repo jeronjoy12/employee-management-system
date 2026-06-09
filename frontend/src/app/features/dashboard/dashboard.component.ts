@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  title = 'Employee Management System';
+  title = 'RetailCloud EMS';
 
   employeeCount = 100;
   employeeName = '';
