@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   title = 'Employee Feature Dashboard';
 
+
   employeeCount = 100;
   employeeName = '';
   employees = [
