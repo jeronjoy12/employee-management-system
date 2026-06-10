@@ -32,13 +32,5 @@ export class EmployeeService {
       JSON.stringify(this.employees)
     );
   }
-  loadEmployees(): Employee[] {
-    const data = localStorage.getItem('employees');
 
-    if (data) {
-      return JSON.parse(data);
-    }
-
-    return [];
-  }
 }
