@@ -1,0 +1,22 @@
+.dashboard {
+  padding: 24px;
+}
+
+.stats-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  width: 220px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}

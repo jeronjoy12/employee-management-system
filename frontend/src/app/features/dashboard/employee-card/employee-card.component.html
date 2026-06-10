@@ -1,12 +1,19 @@
-<div>
-  Employee: {{ employeeName }}
-</div>
-<div>
+<div class="card">
 
-  <p>{{ employeeName }}</p>
+  <h3>Employee Information</h3>
+
+  <div class="info-row">
+    <span>Name:</span>
+    <span>{{ employeeName }}</span>
+  </div>
+
+  <div class="info-row">
+    <span>Department:</span>
+    <span>IT</span>
+  </div>
 
   <button (click)="onDelete()">
-    Delete
+    Delete Employee
   </button>
 
 </div>

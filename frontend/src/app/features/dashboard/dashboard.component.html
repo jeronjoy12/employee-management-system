@@ -1,52 +1,48 @@
-<h1>{{ title }}</h1>
+<div class="dashboard">
 
-<p>Total Employees: {{ employeeCount }}</p>
+  <h1>Employee Management System</h1>
 
-<button (click)="increaseCount()">
-  Add Employee
-</button>
-<p *ngIf="employeeCount > 100">
-  More than 100 employees
-</p>
+  <div class="stats-container">
 
-<hr>
-<app-employee-card
-  [employeeName]="employeeName"
-  (deleteEmployee)="handleDelete($event)">
-</app-employee-card>
+    <div class="stat-card">
+      <h3>Total Employees</h3>
+      <p>{{ employeeCount }}</p>
+    </div>
 
-<input
-  type="text"
-  [(ngModel)]="employee"
-  placeholder="Enter employee name">
+    <div class="stat-card">
+      <h3>Departments</h3>
+      <p>5</p>
+    </div>
 
+    <div class="stat-card">
+      <h3>Budget</h3>
+      <p>₹25,00,000</p>
+    </div>
 
+  </div>
 
-<div [ngSwitch]="role">
+  <h2>Quick Information</h2>
 
-  <p *ngSwitchCase="'admin'">
-    Admin Screen
-  </p>
+  <div class="cards-container">
 
-  <p *ngSwitchCase="'manager'">
-    Manager Screen
-  </p>
+    <app-employee-card
+      [employeeName]="employeeName"
+      (deleteEmployee)="handleDelete($event)">
+    </app-employee-card>
 
-  <p *ngSwitchDefault>
-    Employee Screen
-  </p>
+    <app-department-card
+      [department]="department"
+      (selectDepartment)="handleDepartment($event)">
+    </app-department-card>
+
+  </div>
+
+  <h2>Employees</h2>
+
+  <ul>
+    <li *ngFor="let employee of employees">
+      {{ employee }}
+    </li>
+  </ul>
 
 </div>
-<button (click)="showEmployees = !showEmployees">
-  Toggle Employees
-</button>
-
-<ul *ngIf="showEmployees">
-  <li *ngFor="let employee of employees">
-    {{ employee }}
-  </li>
-</ul>
-
-<button (click)="saveEmployee()">
-  Save Employee
-</button>
