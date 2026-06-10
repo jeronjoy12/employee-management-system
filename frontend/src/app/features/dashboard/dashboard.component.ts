@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "./services/employee.service";
+import {Employee} from "../../shared/models/employee";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,16 +8,13 @@ import {EmployeeService} from "./services/employee.service";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  title = 'Employee Feature Dashboard';
 
-  department = 'HR';
+
+  department = 'Kevin';
   employeeCount = 100;
-  employeeName = 'John Doe';
-  employees: string[] = [];
-  role = 'admin';
-  employee='';
-  showEmployees = true;
-  showdepartment = true;
+
+  employees: Employee[] = [];
+
 
   constructor(
     private employservice:EmployeeService
@@ -24,17 +22,15 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.employees = this.employservice.getEmployees();
 
-    console.log('Dashboard Loaded');
+    this.employservice.saveEmployees();
+
   }
 
-  increaseCount(): void {
-    this.employeeCount++;
-  }
-  saveEmployee(): void {
-    console.log(this.employeeName);
-  }
+
+
   handleDelete(name: string): void {
 
     console.log('Deleted:', name);

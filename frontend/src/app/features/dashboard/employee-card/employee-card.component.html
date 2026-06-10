@@ -4,12 +4,22 @@
 
   <div class="info-row">
     <span>Name:</span>
-    <span>{{ employeeName }}</span>
+    <span>{{ employee.name }}</span>
   </div>
 
   <div class="info-row">
     <span>Department:</span>
-    <span>IT</span>
+    <span>{{ employee.department }}</span>
+  </div>
+
+  <div class="info-row">
+    <span>Email:</span>
+    <span>{{ employee.email }}</span>
+  </div>
+
+  <div class="info-row">
+    <span>Salary:</span>
+    <span>{{ employee.salary }}</span>
   </div>
 
   <button (click)="onDelete()">

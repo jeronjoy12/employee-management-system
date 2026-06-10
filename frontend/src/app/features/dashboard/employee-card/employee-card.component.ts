@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import {Employee} from "../../../shared/models/employee";
 
 @Component({
   selector: 'app-employee-card',
@@ -13,13 +14,13 @@ import {
 export class EmployeeCardComponent {
 
   @Input()
-  employeeName: string = '';
+  employee!: Employee;
 
   @Output()
   deleteEmployee = new EventEmitter<string>();
 
   onDelete(): void {
-    this.deleteEmployee.emit(this.employeeName);
+    this.deleteEmployee.emit(this.employee.name);
   }
 
 }

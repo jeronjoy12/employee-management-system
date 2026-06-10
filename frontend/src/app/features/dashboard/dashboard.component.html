@@ -26,7 +26,7 @@
   <div class="cards-container">
 
     <app-employee-card
-      [employeeName]="employeeName"
+      [employee]="employees[0]"
       (deleteEmployee)="handleDelete($event)">
     </app-employee-card>
 
@@ -41,8 +41,10 @@
 
   <ul>
     <li *ngFor="let employee of employees">
-      {{ employee }}
+      {{ employee.name }}
     </li>
   </ul>
+
+
 
 </div>
