@@ -1,0 +1,52 @@
+<div class="table-container">
+
+  <div class="header">
+    <h2>Employee List</h2>
+
+    <button class="add-btn" routerLink="/employee-form">
+      Add Employee
+    </button>
+  </div>
+
+  <table>
+
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Email</th>
+      <th>Salary</th>
+      <th colspan="2">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let employee of employees">
+
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.department }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.salary }}</td>
+
+      <td>
+        <button
+          class="edit-btn"
+          (click)="OnEdit(employee.id)">
+          Edit
+        </button>
+      </td>
+
+      <td>
+        <button
+          class="delete-btn"
+          (click)="OnDelete(employee.id)">
+          Delete
+        </button>
+      </td>
+
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>

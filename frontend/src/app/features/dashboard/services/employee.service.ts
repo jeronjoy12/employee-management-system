@@ -23,7 +23,7 @@ export class EmployeeService {
   ];
 
 
-  constructor() { }
+  constructor() { this.loadEmployees()}
   getEmployees() { return this.employees; }
 
   saveEmployees(): void {
@@ -32,5 +32,44 @@ export class EmployeeService {
       JSON.stringify(this.employees)
     );
   }
+  addEmployee(employee: Employee): void {
 
+    const newEmployee = {
+      ...employee,
+      id: this.employees.length + 1
+    };
+
+    this.employees.push(newEmployee);
+
+    this.saveEmployees();
+  }
+  removeEmployee(id:number): void {
+    this.employees = this.employees.filter(employee => employee.id !== id);
+    this.saveEmployees()
+  }
+  loadEmployees(): void {
+    const data = localStorage.getItem('employees');
+
+    if (data) {
+      this.employees = JSON.parse(data);
+    }
+  }
+  GetEmployee(id:number): Employee|undefined {
+    return this.employees.find(employee => employee.id == id);
+
+
+  }
+
+  updateEmployee(updatedEmployee: Employee): void {
+
+    const index = this.employees.findIndex(
+      employee => employee.id === updatedEmployee.id
+    );
+
+    if (index !== -1) {
+      this.employees[index] = updatedEmployee;
+      this.saveEmployees();
+    }
+
+  }
 }

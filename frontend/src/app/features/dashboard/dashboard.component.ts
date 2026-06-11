@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "./services/employee.service";
 import {Employee} from "../../shared/models/employee";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -16,8 +17,10 @@ export class DashboardComponent implements OnInit {
   employees: Employee[] = [];
 
 
+
   constructor(
-    private employservice:EmployeeService
+    private employservice:EmployeeService,
+    private router: Router
   ) {
   }
 
@@ -30,7 +33,10 @@ export class DashboardComponent implements OnInit {
   }
 
 
-
+gotoEmployee() {
+    this.router.navigate(['/employee-form']);
+    console.log("gotoEmployee");
+}
   handleDelete(name: string): void {
 
     console.log('Deleted:', name);
