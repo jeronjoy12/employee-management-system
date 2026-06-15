@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EmployeeFormRoutingModule } from './employee-form-routing.module';
 import { EmployeeFormComponent } from './employee-form.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     FormsModule,
     CommonModule,
-    EmployeeFormRoutingModule
+    EmployeeFormRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeFormModule { }

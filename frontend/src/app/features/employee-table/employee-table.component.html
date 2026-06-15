@@ -7,8 +7,11 @@
       Add Employee
     </button>
   </div>
+  <div *ngIf="loading">
+    Loading Employees...
+  </div>
 
-  <table>
+  <table *ngIf="!loading">
 
     <thead>
     <tr>
@@ -21,9 +24,11 @@
     </thead>
 
     <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr
+      #employeeRow
+      *ngFor="let employee of employees">
 
-      <td>{{ employee.name }}</td>
+      <td>{{ employee.name  | employeeName }}</td>
       <td>{{ employee.department }}</td>
       <td>{{ employee.email }}</td>
       <td>{{ employee.salary }}</td>

@@ -5,13 +5,17 @@ import { EmployeeTableRoutingModule } from './employee-table-routing.module';
 import { EmployeeTableComponent } from './employee-table.component';
 
 
+
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   declarations: [
     EmployeeTableComponent
   ],
   imports: [
     CommonModule,
-    EmployeeTableRoutingModule
+    EmployeeTableRoutingModule,
+    SharedModule
   ]
 })
 export class EmployeeTableModule { }

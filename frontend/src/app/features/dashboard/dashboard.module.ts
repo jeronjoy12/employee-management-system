@@ -6,8 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import {FormsModule} from "@angular/forms";
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
 import { DepartmentCardComponent } from './department-card/department-card.component';
-
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +15,10 @@ import { DepartmentCardComponent } from './department-card/department-card.compo
     DepartmentCardComponent
   ],
   imports: [
-
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }

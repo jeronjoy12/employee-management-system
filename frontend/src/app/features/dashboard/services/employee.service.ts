@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Employee} from "../../../shared/models/employee";
-
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import{delay} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +24,18 @@ export class EmployeeService {
   ];
 
 
-  constructor() { this.loadEmployees()}
-  getEmployees() { return this.employees; }
+  constructor() { this.loadEmployees(),
+    this.employeesSubject.next(
+      this.employees);}
+  private employeesSubject =
+    new BehaviorSubject<Employee[]>([]);
+
+  employees$ =
+    this.employeesSubject.asObservable();
+  getEmployees(): Observable<Employee[]> {
+
+    return of(this.employees).pipe(delay(2000));
+  }
 
   saveEmployees(): void {
     localStorage.setItem(
@@ -42,10 +53,16 @@ export class EmployeeService {
     this.employees.push(newEmployee);
 
     this.saveEmployees();
+    this.employeesSubject.next(
+      this.employees
+    );
   }
   removeEmployee(id:number): void {
     this.employees = this.employees.filter(employee => employee.id !== id);
     this.saveEmployees()
+    this.employeesSubject.next(
+      this.employees
+    );
   }
   loadEmployees(): void {
     const data = localStorage.getItem('employees');
@@ -69,6 +86,9 @@ export class EmployeeService {
     if (index !== -1) {
       this.employees[index] = updatedEmployee;
       this.saveEmployees();
+      this.employeesSubject.next(
+        this.employees
+      );
     }
 
   }
