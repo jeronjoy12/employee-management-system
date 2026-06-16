@@ -10,10 +10,14 @@
   <div *ngIf="loading">
     Loading Employees...
   </div>
-
+  <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Search Employee">
   <table *ngIf="!loading">
 
     <thead>
+
     <tr>
       <th>Name</th>
       <th>Department</th>
@@ -26,7 +30,7 @@
     <tbody>
     <tr
       #employeeRow
-      *ngFor="let employee of employees">
+      *ngFor="let employee of filteredEmployees">
 
       <td>{{ employee.name  | employeeName }}</td>
       <td>{{ employee.department }}</td>

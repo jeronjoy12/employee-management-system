@@ -4,16 +4,14 @@
 
   <div class="info-row">
     <span>Name:</span>
-    <span>{{ department }}</span>
+    <span>{{ department.name }}</span>
   </div>
 
   <div class="info-row">
     <span>Employees:</span>
-    <span>25</span>
+    <span>{{ department.employeeCount }}</span>
   </div>
 
-  <button (click)="SelectDepartment()">
-    Select Department
-  </button>
+
 
 </div>

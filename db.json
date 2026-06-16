@@ -1,0 +1,51 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Engineering",
+      "employeeCount": 25
+    },
+    {
+      "id": 2,
+      "name": "HR",
+      "employeeCount": 10
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "department": "Engineering",
+      "email": "john@gmail.com",
+      "salary": 50000
+    },
+    {
+      "id": 2,
+      "name": "Jane S",
+      "department": "HR",
+      "email": "jane@gmail.com",
+      "salary": 45000
+    },
+    {
+      "id": 3,
+      "name": "jeron",
+      "department": "HR",
+      "email": "j@gmail.com",
+      "salary": 1000000
+    },
+    {
+      "id": 4,
+      "name": "Sanjo",
+      "department": "Engineering",
+      "email": "Sanjo@gmail.com",
+      "salary": 50000
+    },
+    {
+      "id": 5,
+      "name": "fayaz",
+      "department": "HR",
+      "email": "E@gmail.com",
+      "salary": 33344
+    }
+  ]
+}

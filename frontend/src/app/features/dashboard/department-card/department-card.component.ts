@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-
+import { Department} from "../../../shared/models/department";
 @Component({
   selector: 'app-department-card',
   templateUrl: './department-card.component.html',
@@ -8,14 +8,11 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 export class DepartmentCardComponent implements OnInit {
 
   @Input()
-  department:string='';
+  department!: Department;
 
   @Output()
   selectDepartment = new EventEmitter<string>();
 
-  SelectDepartment(): void {
-    this.selectDepartment.emit(this.department);
-  }
 
   constructor() { }
 

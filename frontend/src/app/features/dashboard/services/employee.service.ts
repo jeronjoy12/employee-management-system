@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Employee} from "../../../shared/models/employee";
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import{delay} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
@@ -23,10 +24,9 @@ export class EmployeeService {
     }
   ];
 
+  private apiUrl = 'http://localhost:3000/employees';
+  constructor( private http: HttpClient) {}
 
-  constructor() { this.loadEmployees(),
-    this.employeesSubject.next(
-      this.employees);}
   private employeesSubject =
     new BehaviorSubject<Employee[]>([]);
 
@@ -34,7 +34,7 @@ export class EmployeeService {
     this.employeesSubject.asObservable();
   getEmployees(): Observable<Employee[]> {
 
-    return of(this.employees).pipe(delay(2000));
+    return this.http.get<Employee[]>(this.apiUrl)
   }
 
   saveEmployees(): void {
@@ -43,53 +43,26 @@ export class EmployeeService {
       JSON.stringify(this.employees)
     );
   }
-  addEmployee(employee: Employee): void {
+  addEmployee(employee: Employee):Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl, employee)
 
-    const newEmployee = {
-      ...employee,
-      id: this.employees.length + 1
-    };
-
-    this.employees.push(newEmployee);
-
-    this.saveEmployees();
-    this.employeesSubject.next(
-      this.employees
+  }
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiUrl}/${id}`
     );
   }
-  removeEmployee(id:number): void {
-    this.employees = this.employees.filter(employee => employee.id !== id);
-    this.saveEmployees()
-    this.employeesSubject.next(
-      this.employees
-    );
-  }
-  loadEmployees(): void {
-    const data = localStorage.getItem('employees');
 
-    if (data) {
-      this.employees = JSON.parse(data);
-    }
-  }
-  GetEmployee(id:number): Employee|undefined {
-    return this.employees.find(employee => employee.id == id);
+  GetEmployee(id:number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/${id}`)
 
 
   }
 
-  updateEmployee(updatedEmployee: Employee): void {
-
-    const index = this.employees.findIndex(
-      employee => employee.id === updatedEmployee.id
-    );
-
-    if (index !== -1) {
-      this.employees[index] = updatedEmployee;
-      this.saveEmployees();
-      this.employeesSubject.next(
-        this.employees
-      );
-    }
-
+  updateEmployee(employee: Employee): Observable<Employee> {
+      return  this.http.put<Employee>(
+        `${this.apiUrl}/${employee.id}`,
+        employee
+      )
   }
 }

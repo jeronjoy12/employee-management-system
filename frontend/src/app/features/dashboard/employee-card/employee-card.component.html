@@ -19,11 +19,8 @@
 
   <div class="info-row">
     <span>Salary:</span>
-    <span>{{ employee.salary }}</span>
+    <span>{{ employee.salary | currency:'INR' }}</span>
   </div>
 
-  <button (click)="onDelete()">
-    Delete Employee
-  </button>
 
 </div>

@@ -3,8 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges,
-  SimpleChanges, OnInit
+
 } from '@angular/core';
 import {Employee} from "../../../shared/models/employee";
 
@@ -13,21 +12,12 @@ import {Employee} from "../../../shared/models/employee";
   templateUrl: './employee-card.component.html',
   styleUrls: ['./employee-card.component.scss']
 })
-export class EmployeeCardComponent implements OnChanges {
+export class EmployeeCardComponent {
 
   @Input()
   employee!: Employee;
 
   @Output()
-  deleteEmployee = new EventEmitter<string>();
-
-  onDelete(): void {
-    this.deleteEmployee.emit(this.employee.name);
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-
-
+  deleteEmployee = new EventEmitter<number>();
 
 }

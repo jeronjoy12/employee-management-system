@@ -1,11 +1,13 @@
-<form [formGroup]="employeeForm">
-  <div>
-    <button
-      class="Table-btn"
-      (click)="showTable()">
-      Table
-    </button>
-  </div>
+<button
+  type="button"
+  class="Table-btn"
+  (click)="showTable()">
+  Table
+</button>
+<form
+  [formGroup]="employeeForm"
+  (ngSubmit)="OnSubmit()">
+
 
   <div class="form-group">
     <label>Name</label>
@@ -68,9 +70,9 @@ name is required
   </div>
 
   <button
+    type="submit"
     class="submit-btn"
-
-    (click)="OnSubmit()">
+    [disabled]="employeeForm.invalid">
     Save Employee
   </button>
 

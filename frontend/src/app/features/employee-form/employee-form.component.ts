@@ -34,26 +34,33 @@ export class EmployeeFormComponent implements OnInit{
   });
 
   ngOnInit(): void {
+
     const id = Number(
       this.route.snapshot.paramMap.get('id')
     );
 
-      this.employeeId= id;
-    const employee = this.employeeService.GetEmployee(id);
+    this.employeeId = id;
 
+    if (id > 0) {
 
+      this.employeeService
+        .GetEmployee(id)
+        .subscribe((employee: Employee) => {
 
-    if (employee) {
+          this.employeeForm.patchValue({
+            name: employee.name,
+            department: employee.department,
+            email: employee.email,
+            salary: employee.salary
+          });
 
-      this.employeeForm.patchValue({
-        name: employee.name,
-        department: employee.department,
-        email: employee.email,
-        salary: employee.salary
-      });
+        });
 
     }
+
   }
+
+
   showTable(){
     this.router.navigate(['/employee-table']);
   }
@@ -69,11 +76,22 @@ export class EmployeeFormComponent implements OnInit{
 
     if (this.employeeId > 0) {
 
-      this.employeeService.updateEmployee(employeeData);
+      this.employeeService
+        .updateEmployee(employeeData)
+        .subscribe();
 
     } else {
 
-      this.employeeService.addEmployee(employeeData);
+      this.employeeService
+        .addEmployee(employeeData)
+        .subscribe({
+          next: (response) => {
+            console.log('Employee saved', response);
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
 
     }
 

@@ -26,12 +26,14 @@
   <div class="cards-container">
 
     <app-employee-card
-      [employee]="employees[0]"
+      *ngFor="let emp of employees"
+      [employee]="emp"
       (deleteEmployee)="handleDelete($event)">
     </app-employee-card>
 
     <app-department-card
-      [department]="department"
+      *ngFor="let dept of departments"
+      [department]="dept"
       (selectDepartment)="handleDepartment($event)">
     </app-department-card>
 

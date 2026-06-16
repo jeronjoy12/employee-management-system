@@ -7,6 +7,7 @@ import { EmployeeTableComponent } from './employee-table.component';
 
 
 import { SharedModule } from '../../shared/shared.module';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     EmployeeTableRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
+
   ]
 })
 export class EmployeeTableModule { }
