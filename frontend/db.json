@@ -1,0 +1,30 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Engineering",
+      "employeeCount": 25
+    },
+    {
+      "id": 2,
+      "name": "HR",
+      "employeeCount": 10
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "department": "IT",
+      "email": "john@test.com",
+      "salary": 50000
+    },
+    {
+      "id": 2,
+      "name": "David Smith",
+      "department": "HR",
+      "email": "david@test.com",
+      "salary": 45000
+    }
+  ]
+}

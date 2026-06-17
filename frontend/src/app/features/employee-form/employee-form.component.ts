@@ -8,6 +8,9 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import {salaryValidator} from "../../shared/validators/salary.validator";
+import {nameValidator} from "../../shared/validators/name.validator";
+import {emailMatchValidator} from "../../shared/validators/email-match.validator";
 
 @Component({
   selector: 'app-employee-form',
@@ -27,11 +30,30 @@ export class EmployeeFormComponent implements OnInit{
     private route: ActivatedRoute
   ) {}
   employeeForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    department: new FormControl('', Validators.required),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    salary: new FormControl(0,[Validators.required,Validators.min(1)])
-  });
+
+      name: new FormControl('', Validators.required),
+
+      department: new FormControl('', Validators.required),
+
+      email: new FormControl(
+        '',
+        [Validators.required, Validators.email]
+      ),
+
+      confirmEmail: new FormControl(
+        '',
+        [Validators.required, Validators.email]
+      ),
+
+      salary: new FormControl(
+        0,
+        [Validators.required, salaryValidator]
+      )
+
+    },
+    {
+      validators: emailMatchValidator
+    });
 
   ngOnInit(): void {
 
@@ -66,6 +88,9 @@ export class EmployeeFormComponent implements OnInit{
   }
   OnSubmit(): void {
 
+
+
+
     const employeeData: Employee = {
       id: this.employeeId,
       name: this.employeeForm.value.name ?? '',
@@ -73,6 +98,7 @@ export class EmployeeFormComponent implements OnInit{
       email: this.employeeForm.value.email ?? '',
       salary: this.employeeForm.value.salary ?? 0
     };
+
 
     if (this.employeeId > 0) {
 
